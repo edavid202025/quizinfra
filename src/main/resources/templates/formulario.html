@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Inventario de Equipos Informáticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background-color: #f2f2f2;
+        }
+        h1 { text-align: center; }
+
+        /* Botón regresar */
+        a.btn-back {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background-color: #004c8c;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        a.btn-back:hover { background-color: #003967; }
+
+        /* Formulario */
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label, select, input, textarea { display: block; width: 100%; margin-bottom: 1rem; }
+        input, select, textarea { padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc; }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.7rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <!-- Botón Volver -->
+    <a href="/" class="btn-back">⟵ Volver al inicio</a>
+
+    <h1>Formulario de Inventario de Equipos Informáticos</h1>
+
+    <form th:action="@{/guadarinventario}" th:object="${inventario}" method="post">
+        <label for="nombre">Nombre del equipo:</label>
+        <input type="text" id="nombre" th:field="*{nombredelequipo}" required>
+
+        <label for="id">ID del equipo:</label>
+        <input type="text" id="id" th:field="*{id}" pattern="[A-Za-z0-9]+" required>
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" th:field="*{categoria}" required>
+            <option value="" disabled selected>Seleccione una categoría</option>
+            <option value="Laptop">Laptop</option>
+            <option value="PC de escritorio">PC de escritorio</option>
+            <option value="Servidor">Servidor</option>
+            <option value="Impresora">Impresora</option>
+            <option value="Accesorios">Accesorios</option>
+        </select>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" th:field="*{marca}" required>
+
+        <label for="precio">Precio ($):</label>
+        <input type="number" id="precio" th:field="*{precio}" step="0.01" required>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" th:field="*{estado}" required>
+            <option value="" disabled selected>Seleccione el estado</option>
+            <option value="Nuevo">Nuevo</option>
+            <option value="Buen estado">Buen estado</option>
+            <option value="En Reparación">En Reparación</option>
+            <option value="Obsoleto">Obsoleto</option>
+        </select>
+
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" th:field="*{observacion}" rows="4"></textarea>
+
+        <button type="submit">Registrar Equipo</button>
+    </form>
+</body>
+</html>

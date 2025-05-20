@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Equipos</title>
+    <style>
+        /* ——— Estilos existentes ——— */
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px #000;
+        }
+        a.button, a.btn-back {
+            text-decoration: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        /* Botón genérico verde   */
+        a.button          { background-color: #28a745; }
+        a.button:hover    { background-color: #218838; }
+        /* Botón “Eliminar” rojo */
+        .eliminar         { background-color: #dc3545; }
+        .eliminar:hover   { background-color: #c82333; }
+        /* Botón “Volver” azul oscuro */
+        a.btn-back        { background-color: #004c8c; margin-bottom: 1.5rem; }
+        a.btn-back:hover  { background-color: #003967; }
+
+        /* ——— Tabla ——— */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffffdd;
+            border-radius: 10px;
+            overflow: hidden;
+            color: #333;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        th, td { padding: 1rem; text-align: center; }
+        th     { background-color: #007bff; color: #fff; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover          { background-color: #d0e7ff; }
+
+        .contenedor { max-width: 1200px; margin: auto; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+
+        <!-- Botón para volver al index -->
+        <a href="/" class="btn-back">⟵ Volver al inicio</a>
+
+        <h1>Inventario de Equipos Informáticos</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Marca</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${listaInventario}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.nombredelequipo}"></td>
+                    <td th:text="${item.categoria}"></td>
+                    <td th:text="${item.marca}"></td>
+                    <td th:text="${item.precio}"></td>
+                    <td th:text="${item.estado}"></td>
+                    <td th:text="${item.observacion}"></td>
+                    <td>
+                        <a th:href="@{'/inventario/editar/' + ${item.id}}" class="button">Editar</a>
+                        <a th:href="@{'/inventario/eliminar/' + ${item.id}}" class="button eliminar">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

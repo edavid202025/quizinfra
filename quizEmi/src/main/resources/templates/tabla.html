@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Equipos</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffffdd;
+            border-radius: 10px;
+            overflow: hidden;
+            color: #333;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #d0e7ff;
+        }
+        a.button {
+            text-decoration: none;
+            color: #fff;
+            background-color: #28a745;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        a.button:hover {
+            background-color: #218838;
+        }
+        .eliminar {
+            background-color: #dc3545;
+        }
+        .eliminar:hover {
+            background-color: #c82333;
+        }
+        .contenedor {
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Inventario de Equipos Informáticos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Marca</th>
+                    <th>Fecha de adquisición</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${listaInventario}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.nombre}"></td>
+                    <td th:text="${item.categoria}"></td>
+                    <td th:text="${item.marca}"></td>
+                    <td th:text="${item.fechaAdquisicion}"></td>
+                    <td th:text="${item.precio}"></td>
+                    <td th:text="${item.estado}"></td>
+                    <td th:text="${item.observaciones}"></td>
+                    <td>
+                        <a th:href="@{'/inventario/editar/' + ${item.id}}" class="button">Editar</a>
+                        <a th:href="@{'/inventario/eliminar/' + ${item.id}}" class="button eliminar">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
