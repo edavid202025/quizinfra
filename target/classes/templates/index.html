@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Inventario</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            padding: 100px 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .btn-registrar {
+            background-color: #28a745;
+        }
+        .btn-registrar:hover {
+            background-color: #218838;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Inventario de Equipos</h1>
+        <p>Bienvenido al sistema de gestión de equipos informáticos. Aquí puedes registrar, ver y gestionar los equipos de tu organización.</p>
+        
+        <a href="/listaproductos" class="btn">Ver Inventario</a>
+        <a href="/formparainventario" class="btn btn-registrar">Registrar Nuevo Equipo</a>
+    </div>
+
+    <footer>
+        Proyecto UNAB - Spring Boot Quiz 🌟
+    </footer>
+</body>
+</html>
